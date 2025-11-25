@@ -1,7 +1,8 @@
-package com.smartshop.entity;
+package org.smartshop.smartshop.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.smartshop.smartshop.entity.BaseEntity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
