@@ -1,6 +1,6 @@
 package org.smartshop.smartshop.enums;
 
-public enum PayementStatus {
+public enum PaymentStatus {
     EN_ATTENTE,
     ENCAISSE,
     REJETE
