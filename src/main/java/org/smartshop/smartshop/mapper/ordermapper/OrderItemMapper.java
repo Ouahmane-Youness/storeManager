@@ -1,4 +1,4 @@
-package org.smartshop.smartshop.mapper;
+package org.smartshop.smartshop.mapper.ordermapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
