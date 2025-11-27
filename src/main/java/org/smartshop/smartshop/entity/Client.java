@@ -26,12 +26,16 @@ public class Client extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
+    @Builder.Default
     private CustomerTier tier = CustomerTier.BASIC;
 
     @Column(nullable = false)
+    @Builder.Default
     private Integer totalOrders = 0;
 
+
     @Column(nullable = false, precision = 10, scale = 2)
+    @Builder.Default
     private BigDecimal totalSpent = BigDecimal.ZERO;
 
     private LocalDateTime firstOrderDate;

@@ -30,12 +30,14 @@ public class PromoCode extends BaseEntity {
     @Column(nullable = false)
     private LocalDate validUntil;
 
-    @Column(nullable = false)
-    private Boolean isActive = true;
+    @Column(name = "is_active", nullable = false)
+    @Builder.Default
+    private Boolean active = true;
 
     private Integer usageLimit;
 
     @Column(nullable = false)
+    @Builder.Default
     private Integer usageCount = 0;
 
     @OneToMany(mappedBy = "promoCode", fetch = FetchType.LAZY)

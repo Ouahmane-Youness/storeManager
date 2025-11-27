@@ -1,4 +1,4 @@
-package com.smartshop.dto.payment;
+package org.smartshop.smartshop.dto.payment;
 
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;

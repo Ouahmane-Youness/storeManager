@@ -1,4 +1,4 @@
-package org.smartshop.smartshop.service;
+package org.smartshop.smartshop.service.interf;
 
 import org.smartshop.smartshop.dto.userdto.CreateUserRequestDTO;
 import org.smartshop.smartshop.dto.userdto.UserResponseDTO;

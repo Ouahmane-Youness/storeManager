@@ -26,8 +26,9 @@ public class Product extends BaseEntity {
     @Column(nullable = false)
     private int stock;
 
-    @Column(nullable = false)
-    private boolean isActive=true;
+    @Column(name = "is_active", nullable = false)
+    @Builder.Default
+    private boolean active=true;
 
 
 }

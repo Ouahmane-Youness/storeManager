@@ -15,7 +15,7 @@ import org.smartshop.smartshop.enums.UserRole;
 public class User extends BaseEntity{
 
     @Column(nullable = false, unique = true, length = 50)
-    private String userName;
+    private String username;
 
     @Column(nullable = false)
     private String password;
