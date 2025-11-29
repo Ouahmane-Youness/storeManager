@@ -9,6 +9,7 @@ import org.smartshop.smartshop.entity.Client;
 import org.smartshop.smartshop.entity.OrderItem;
 import org.smartshop.smartshop.entity.Product;
 import org.smartshop.smartshop.entity.PromoCode;
+import org.smartshop.smartshop.enums.CustomerTier;
 import org.smartshop.smartshop.enums.OrderStatus;
 import org.smartshop.smartshop.exception.BusinessException;
 import org.smartshop.smartshop.exception.ResourceNotFoundException;
@@ -80,11 +81,41 @@ public class OrderServiceImpl implements OrderService {
 
         }
 
-
+        BigDecimal loyaltyDiscount = calculateLoyaltyDiscount(client, subtotal);
 
 //        PromoCode code = promoCodeRepository.existsByCode(dto.getPromoCode());
 
 
+    }
+
+    private BigDecimal calculateLoyaltyDiscount(Client client, BigDecimal subtotal)
+    {
+        CustomerTier tier = client.getTier();
+        BigDecimal discountPercentage = BigDecimal.ZERO;
+
+        switch (tier)
+        {
+            case SILVER:
+                if(subtotal.compareTo(BigDecimal.valueOf(500)) >= 0)
+                {
+                    discountPercentage = BigDecimal.valueOf(5);
+                }
+                break;
+
+            case GOLD:
+                if(subtotal.compareTo(BigDecimal.valueOf(800)) >= 0)
+                {
+                    discountPercentage = BigDecimal.valueOf(10);
+                }
+
+            case PLATINUM:
+                if(subtotal.compareTo(BigDecimal.valueOf(1200)) >= 0)
+                {
+                    discountPercentage = BigDecimal.valueOf(15);
+                }
+        }
+
+        BigDecimal discountAmount =  discountPercentage.multiply(subtotal).divide(BigDecimal.valueOf(100), 2,RoundingMode.HALF_UP);
     }
 
     @Override
