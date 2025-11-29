@@ -237,7 +237,7 @@ public class OrderServiceImpl implements OrderService {
         client.setTotalSpent(client.getTotalSpent().add(orderTotal));
 
         if (client.getFirstOrderDate() == null) {
-            client.getFirstOrderDate(LocalDateTime.now());
+            client.getFirstOrderDate();
         }
         client.setLastOrderDate(LocalDateTime.now());
 
