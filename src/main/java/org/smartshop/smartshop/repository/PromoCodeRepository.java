@@ -23,5 +23,10 @@ public interface PromoCodeRepository extends JpaRepository<PromoCode, Long> {
     List<PromoCode> findByActiveTrueAndDeletedFalse();
     List<PromoCode> findByDeletedFalse();
 
+    @Query("SELECT p FROM PromoCode p WHERE p.code = :code AND p.active = true " +
+            "AND p.deleted = false AND :currentDate BETWEEN p.validFrom AND p.validUntil " +
+            "AND (p.usageLimit IS NULL OR p.usageCount < p.usageLimit)")
+    Optional<PromoCode> findValidPromoCode(@Param("code") String code, @Param("currentDate") LocalDate currentDate);
+
 
 }
