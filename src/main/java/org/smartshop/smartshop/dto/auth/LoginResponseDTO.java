@@ -16,5 +16,6 @@ public class LoginResponseDTO {
     private long userid;
     private String username;
     private UserRole userRole;
+    private String message;
 
 }
