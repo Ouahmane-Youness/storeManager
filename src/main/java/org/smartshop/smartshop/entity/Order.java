@@ -2,6 +2,7 @@ package org.smartshop.smartshop.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.smartshop.smartshop.enums.OrderStatus;
 
 import java.math.BigDecimal;
@@ -15,7 +16,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 public class Order extends BaseEntity {
 
     @Column(nullable = false)

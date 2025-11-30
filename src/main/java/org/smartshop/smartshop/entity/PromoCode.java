@@ -2,6 +2,7 @@ package org.smartshop.smartshop.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.smartshop.smartshop.entity.BaseEntity;
 
 import java.math.BigDecimal;
@@ -15,7 +16,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 public class PromoCode extends BaseEntity {
 
     @Column(nullable = false, unique = true, length = 20)
