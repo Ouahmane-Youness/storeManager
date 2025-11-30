@@ -2,6 +2,7 @@ package org.smartshop.smartshop.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.smartshop.smartshop.enums.CustomerTier;
 
 import java.math.BigDecimal;
@@ -15,7 +16,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 public class Client extends BaseEntity {
 
     @Column(nullable = false, length = 100)

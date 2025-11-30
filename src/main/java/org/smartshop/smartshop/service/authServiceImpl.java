@@ -22,12 +22,11 @@ public class authServiceImpl implements AuthService {
 
     @Override
     public LoginResponseDTO login(LoginRequestDTO dto, HttpSession session) {
-        User user = userRepository.findByUsernameAndDeletedFalse(dto.getUsername()).orElseThrow(()-> new BusinessException(" ivalide usrname or passowrd"));
+        User user = userRepository.findByUsernameAndDeletedFalse(dto.getUsername())
+                .orElseThrow(() -> new BusinessException("Invalid username or password"));
 
-
-        if(!user.getPassword().equals(dto.getPassword()))
-        {
-            throw new BusinessException("Invalide username or password");
+        if (!user.getPassword().equals(dto.getPassword())) {
+            throw new BusinessException("Invalid username or password");
         }
 
         session.setAttribute("userId", user.getId());
@@ -40,7 +39,6 @@ public class authServiceImpl implements AuthService {
                 .userRole(user.getRole())
                 .message("Login successful")
                 .build();
-
     }
 
     @Override

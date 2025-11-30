@@ -16,16 +16,14 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private AuthService authService;
+    private final AuthService authService;
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> login(
             @Valid @RequestBody LoginRequestDTO dto,
-            HttpSession session)
-    {
-        LoginResponseDTO loginResponseDTO = authService.login(dto, session);
-        return ResponseEntity.ok(loginResponseDTO);
-
+            HttpSession session) {
+        LoginResponseDTO response = authService.login(dto, session);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/logout")
@@ -43,8 +41,8 @@ public class AuthController {
             return ResponseEntity.ok(Map.of(
                     "authenticated", true,
                     "userId", session.getAttribute("userId"),
-                    "username", session.getAttribute("username"),
-                    "role", session.getAttribute("role")
+                    "usernNme", session.getAttribute("userName"),
+                    "userRole", session.getAttribute("userRole")
             ));
         }
 

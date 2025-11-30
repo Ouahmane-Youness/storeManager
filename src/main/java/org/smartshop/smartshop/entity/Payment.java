@@ -1,6 +1,7 @@
 package org.smartshop.smartshop.entity;
 
 
+import lombok.experimental.SuperBuilder;
 import org.smartshop.smartshop.enums.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,7 +15,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 public class Payment extends BaseEntity {
 
     @Column(nullable = false)

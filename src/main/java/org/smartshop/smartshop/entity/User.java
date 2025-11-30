@@ -3,6 +3,7 @@ package org.smartshop.smartshop.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.smartshop.smartshop.enums.UserRole;
 
 @Entity
@@ -11,7 +12,7 @@ import org.smartshop.smartshop.enums.UserRole;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@SuperBuilder
 public class User extends BaseEntity{
 
     @Column(nullable = false, unique = true, length = 50)

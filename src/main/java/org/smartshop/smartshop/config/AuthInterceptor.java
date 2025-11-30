@@ -1,5 +1,6 @@
 package org.smartshop.smartshop.config;
 
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -7,18 +8,19 @@ import org.smartshop.smartshop.enums.UserRole;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import java.io.IOException;
-
 @Component
 public class AuthInterceptor implements HandlerInterceptor {
 
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+
         String uri = request.getRequestURI();
         String method = request.getMethod();
 
         if (uri.startsWith("/api/auth")) {
             return true;
         }
+
         HttpSession session = request.getSession(false);
 
         if (session == null || session.getAttribute("userId") == null) {
@@ -27,7 +29,7 @@ public class AuthInterceptor implements HandlerInterceptor {
             return false;
         }
 
-        UserRole role = (UserRole) session.getAttribute("role");
+        UserRole role = (UserRole) session.getAttribute("userRole");
 
         if (isAdminOnlyEndpoint(uri, method) && role != UserRole.ADMIN) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
