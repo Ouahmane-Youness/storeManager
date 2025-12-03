@@ -166,5 +166,3 @@ The API returns standardized JSON error responses including timestamp, status co
 
 422: Business Logic Violation (e.g., insufficient stock).
 
-Testing
-The application is designed to be tested using Postman. Ensure you log in via the /api/auth/login endpoint first to establish a session before accessing protected resources.
